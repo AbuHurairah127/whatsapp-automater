@@ -10,4 +10,8 @@ export const styles = {
     fontSize: 25,
     fontWeight: "bold",
   },
+  link: {
+    color: "white",
+    textDecoration: "none",
+  },
 };

@@ -19,10 +19,10 @@ const App = () => {
         for (let i = 0; i < data.message.length; i++) {
           if (data.message[i] === " ") {
             data.message[i] = "%20";
-            window.open(`https://wa.me/923021685883`);
-            console.log(data);
           }
         }
+        window.open(`https://wa.me/${data.phone}?text=${data.message}`);
+        console.log(data);
       } else {
         data.message = `Assalam u Alaikum! How are you? This is my Whatsapp Number ${data.phone}`;
         window.open(`https://wa.me/923021685883?text=${data.message}`);

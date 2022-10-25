@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/header/Header";
 import "./App.css";
 const App = () => {
+  const [data, setData] = useState({
+    phone: "",
+    message: "",
+  });
+  const onChangeHandler = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+    console.log(data);
+  };
   return (
     <div className="App">
       <Header />
@@ -32,6 +40,9 @@ const App = () => {
               padding: 5,
             }}
             type="text"
+            value={data.message}
+            name="message"
+            onChange={(e) => onChangeHandler(e)}
             placeholder="Type your message here e.g Assalam u Alaikum! Abu Hurairah Here..."
           />
           <input
@@ -67,6 +78,7 @@ const App = () => {
                 paddingTop: 12,
                 paddingBottom: 12,
                 borderRadius: 100,
+                cursor: "pointer",
               }}
             >
               Send Message

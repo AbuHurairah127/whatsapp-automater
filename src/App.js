@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Header from "./components/header/Header";
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const [data, setData] = useState({
     phone: "",
@@ -9,18 +11,30 @@ const App = () => {
   const onChangeHandler = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     setData({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
-    for (let i = 0; i < data.message.length; i++) {
-      if (data.message[i] === " ") {
-        data.message[i] = "%20";
+    if (data.phone.length > 0) {
+      if (data.message.length > 0) {
+        for (let i = 0; i < data.message.length; i++) {
+          if (data.message[i] === " ") {
+            data.message[i] = "%20";
+            window.open(`https://wa.me/923021685883`);
+            console.log(data);
+          }
+        }
+      } else {
+        data.message = `Assalam u Alaikum! How are you? This is my Whatsapp Number ${data.phone}`;
+        window.open(`https://wa.me/923021685883?text=${data.message}`);
+        console.log(data);
       }
+    } else {
+      toast.error("Please enter a phone number!");
     }
   };
   return (
     <div className="App">
+      <ToastContainer />
       <Header />
       <main
         style={{

@@ -16,11 +16,13 @@ const App = () => {
     setData({ ...data, [e.target.name]: e.target.value });
     if (data.phone.length > 0) {
       if (data.message.length > 0) {
-        for (let i = 0; i < data.message.length; i++) {
-          if (data.message[i] === " ") {
-            data.message[i] = "%20";
+        let text = data.message;
+        for (let i = 0; i < text.length; i++) {
+          if (text[i] === " ") {
+            text[i] = "%20";
           }
         }
+        setData({ ...data, message: text });
         window.open(`https://wa.me/${data.phone}?text=${data.message}`);
         console.log(data);
       } else {
@@ -31,6 +33,7 @@ const App = () => {
     } else {
       toast.error("Please enter a phone number!");
     }
+    console.log(data);
   };
   return (
     <div className="App">
@@ -56,7 +59,7 @@ const App = () => {
             <textarea
               style={{
                 marginTop: 25,
-                width: "50%",
+                width: "100%",
                 outline: "none",
                 minHeight: 200,
                 fontFamily: "sans-serif",
@@ -72,7 +75,7 @@ const App = () => {
             <input
               style={{
                 marginTop: 25,
-                width: "50%",
+                width: "100%",
                 height: 40,
                 borderRadius: 8,
                 outline: "none",

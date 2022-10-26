@@ -16,13 +16,6 @@ const App = () => {
     setData({ ...data, [e.target.name]: e.target.value });
     if (data.phone.length > 0) {
       if (data.message.length > 0) {
-        let text = data.message;
-        for (let i = 0; i < text.length; i++) {
-          if (text[i] === " ") {
-            text[i] = "%20";
-          }
-        }
-        setData({ ...data, message: text });
         window.open(`https://wa.me/${data.phone}?text=${data.message}`);
         console.log(data);
       } else {

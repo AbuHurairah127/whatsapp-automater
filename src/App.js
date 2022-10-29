@@ -19,8 +19,8 @@ const App = () => {
         window.open(`https://wa.me/${data.phone}?text=${data.message}`);
         console.log(data);
       } else {
-        data.message = `Assalam u Alaikum! How are you? This is my Whatsapp Number ${data.phone}`;
-        window.open(`https://wa.me/923021685883?text=${data.message}`);
+        data.message = `Assalam u Alaikum! How are you? This is my Whatsapp Number`;
+        window.open(`https://wa.me/${data.phone}?text=${data.message}`);
         console.log(data);
       }
     } else {
